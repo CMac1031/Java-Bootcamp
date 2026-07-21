@@ -14,6 +14,7 @@ public class Calculator {
         System.out.printf("Difference: %.2f%n", difference(a, b));   // subtraction
         System.out.printf("Product: %.2f%n", product(a, b));      // multiplication
         System.out.printf("Quotient: %.2f%n", quotient(a, b));     // division (double ÷ double)
+        System.out.printf("Mod: %.2f%n", mod(a,b));
 
         scanner.close();
     }
@@ -36,5 +37,9 @@ public class Calculator {
     public static double quotient(double a, double b) {
         double quotient = a / b;
         return quotient;
+    }
+    public static double mod(double a, double b) {
+        double  mod = a % b;
+        return mod;
     }
 }
