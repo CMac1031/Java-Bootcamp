@@ -34,17 +34,22 @@ public class StudentManager {
         }
 
         int id = readPositiveInt("Student ID: ");
+        if (findStudentIndex(id) != -1) {
+            System.out.print("\n");
+            System.out.println("Student ID already exists.");
+            return;
+        }
         String name = readNonEmptyLine("Name: ");
         String course = readNonEmptyLine("Course: ");
         double marks = readValidMarks("Marks: ");
 
         students[studentCount] = new Student(id, name, course, marks);
         studentCount++;
-
+        System.out.print("\n");
         System.out.println("Student Added Successfully.");
     }
     public void displayStudents(){
-
+        System.out.print("\n");
         if(studentCount == 0){
             System.out.println("No students to display.");
             return;
@@ -65,29 +70,44 @@ public class StudentManager {
     }
     public void searchStudent(){
         if(studentCount == 0){
+            System.out.print("\n");
             System.out.println("No students to search.");
+            return;
         }
         int id = readPositiveInt("Student ID: ");
         int index = findStudentIndex(id);
         if(index == -1){
-            System.out.println("Student Not Found.")
+            System.out.print("\n");
+            System.out.println("Student Not Found.");
         }
         else{
+            System.out.print("\n");
             students[index].display();
         }
 
     }
     public void calculateAverage(){
-        System.out.println("Method not implemented");
+        double sum=0;
+        if(studentCount == 0){
+            System.out.print("\n");
+            System.out.println("No average available because there are no students.");
+            return;
+        }
+        for(int i = 0 ; i <= studentCount -1 ; i ++){
+                sum += students[i].getMarks();
+        }
+
+        double average = sum/studentCount;
+        System.out.print("\n");
+        System.out.printf("Average Marks: %-8.2f\n",average);
 
     }
     //HELPER METHODS--------------------------------------------------------------------------
     private int readPositiveInt(String prompt) {
         int id = -1;
-
         do {
             System.out.print(prompt);
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine();
 
             try {
                 id = Integer.parseInt(input);
@@ -99,13 +119,13 @@ public class StudentManager {
                 System.out.println("ID must be a valid whole number.");
                 id = -1;
             }
-        } while (id <= 0);
+        } while (id <= 0 );
         return id;
     }
     private String readNonEmptyLine(String prompt){
         while (true) {
             System.out.print(prompt);
-            String input = scanner.nextLine().trim();
+            String input = scanner.nextLine();
 
             if (input.length() !=0) {
                 return input;
