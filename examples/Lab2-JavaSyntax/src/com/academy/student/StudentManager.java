@@ -58,7 +58,7 @@ public class StudentManager {
         System.out.printf("%-8s%-21s%-16s%s%n",
                 "ID", "Name", "Course", "Marks");
         System.out.println("----------------------------------------------------------");
-        for(int i =0; i <= studentCount -1 ; i ++){
+        for(int i =0; i < studentCount ; i ++){
             System.out.printf("%-8d %-20s %-15s %-8.2f%n",
                     students[i].getStudentId(),
                     students[i].getName(),
@@ -93,7 +93,7 @@ public class StudentManager {
             System.out.println("No average available because there are no students.");
             return;
         }
-        for(int i = 0 ; i <= studentCount -1 ; i ++){
+        for(int i = 0 ; i < studentCount ; i ++){
                 sum += students[i].getMarks();
         }
 
