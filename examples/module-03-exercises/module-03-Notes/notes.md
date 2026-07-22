@@ -38,3 +38,25 @@ Main should only collect user input and coordinate the operation by asking the A
 | 2 | Every entity has attributes and one focused responsibility | Pass  |
 | 3 | Relationships include one-to-many multiplicities | Pass |
 | 4 | You can explain why Account owns withdrawal validation | Pass|
+
+### Pass Criteria for Lab 2
+| # | Confirm | Your notes |
+| - | ------- | -------- |
+| 1 | Demo prints rejection and final balance `120.00` | Pass |
+| 2 | Direct `account.balance` access fails to compile | Pass |
+| 3 | You can explain why no public `setBalance` exists | Pass |
+
+## Pass criteria for Lab 3
+
+| # | Confirm | Your notes |
+| - | ------- | --------- |
+| 1 | Savings prints `80.00`; Current prints `78.00` | Pass  |
+| 2 | Base-type array contains both subclass objects | Pass  |
+| 3 | You can explain `super` and runtime polymorphism | Pass  |
+## Pass criteria for Lab 4
+
+| # | Confirm | Your notes |
+| - | ------- | ---------- |
+| 1 | Direct instantiation of `AbstractAccount` fails to compile | Pass  |
+| 2 | `AbstractDemo` runs successfully through `AbstractSavings` | Pass  |
+| 3 | You can explain why `abstract` forces subclasses to implement the method | Pass  |
