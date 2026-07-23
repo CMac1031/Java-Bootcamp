@@ -1,4 +1,4 @@
-public class Customer _____ Printable {
+public class Customer implements Printable {
     private final String id;
     private final String name;
 
@@ -10,6 +10,6 @@ public class Customer _____ Printable {
     @Override
     public void printDetails() {
         // TODO: printf "Customer %s: %s%n" with id and name
-        System.out.printf(_____, id, name);
+        System.out.printf("Customer %s: %s%n", id, name);
     }
 }

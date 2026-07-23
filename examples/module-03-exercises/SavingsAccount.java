@@ -7,6 +7,6 @@ public class SavingsAccount extends Account {
     @Override
     public String getAccountType() {
         // TODO: return "Savings"
-        return Savings;
+        return "Savings";
     }
 }
