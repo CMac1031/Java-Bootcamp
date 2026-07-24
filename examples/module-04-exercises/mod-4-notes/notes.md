@@ -87,3 +87,12 @@ loaded RetentionDemo class
 | 4 | You name at least one bounded-cache fix | Pass |
 - The garbage collector cannot reclaim the arrays while the reachable static collection still holds strong references to them.
 - The program can clear unused entries, impose a maximum cache size, or use an eviction policy.
+
+### Exercise 7
+| Run | String ms | StringBuilder ms |
+| --- | --------- | ---------------- |
+| 1 | | |
+| 2 | | |
+| 3 | | |
+
+Use StringBuilder when constructing text repeatedly in a loop. Ordinary + remains readable and appropriate for a small, fixed expression.
