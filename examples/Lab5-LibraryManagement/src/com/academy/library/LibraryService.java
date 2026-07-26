@@ -198,14 +198,14 @@ public class LibraryService {
     public void borrowBook() {
         // TODO: read bookId + memberId; validate book/member exist
         System.out.println("Enter Book ID: ");
-        String bookIdInput = scanner.nextLine();
-        Book book = findBookById(bookId);
+        String bookIdInput = scanner.nextLine().trim();
+        Book book = findBookById(bookIdInput);
         if(book==null){
             System.out.println("Book does not exist");
             return;
         }
         System.out.println("Enter Member ID: ");
-        String memberIdInput = scanner.nextLine();
+        String memberIdInput = scanner.nextLine().trim();
         Member member = findMemberById(memberIdInput);
         if(member==null){
             System.out.println("Member does not exist");

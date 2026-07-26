@@ -33,11 +33,43 @@ public class ReportService {
         int availableBooks = totalBooks-borrowedBooks;
         int totalMembers = libraryService.getMembers().size();
 
-        throw new UnsupportedOperationException("TODO");
+        StringBuilder report = new StringBuilder();
+
+        report.append("Reports\n");
+        report.append("Books : ").append(totalBooks).append('\n');
+        report.append("Borrowed : ").append(borrowedBooks).append('\n');
+        report.append("Available : ").append(availableBooks).append('\n');
+        report.append("Members : ").append(totalMembers).append('\n');
+        report.append("Most Popular Category : ").append(popularCategory).append('\n');
+        report.append("\nBooks per Category:\n");
+
+        for (Map.Entry<String, Integer> entry : libraryService.getCategoryBookCount().entrySet()) {
+            report.append(entry.getKey())
+                    .append(" : ")
+                    .append(entry.getValue())
+                    .append('\n');
+        }
+
+        Path outputPath = Path.of(fileName);
+
+        Files.writeString(
+                outputPath,
+                report.toString());
+
+        return outputPath;
     }
 
     private String findMostPopularCategory() {
         // TODO: max entry by value from getCategoryBookCount(); orElse "N/A"
-        throw new UnsupportedOperationException("TODO");
+        String mostPopularCategory = "N/A";
+        int highestCount = 0;
+        for (Map.Entry<String, Integer> entry : libraryService.getCategoryBookCount().entrySet()) {
+            if (entry.getValue() > highestCount) {
+                highestCount = entry.getValue();
+                mostPopularCategory = entry.getKey();
+            }
+        }
+
+        return mostPopularCategory;
     }
 }

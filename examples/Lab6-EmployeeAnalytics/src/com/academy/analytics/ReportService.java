@@ -88,7 +88,14 @@ public class ReportService {
 
     public void displayDepartmentStatistics() {
         // TODO: getDepartmentStatistics(); print count/avg/max/min per dept
-        throw new UnsupportedOperationException("TODO");
+        Map<String, DoubleSummaryStatistics> stats = employeeService.getDepartmentStatistics();
+        stats.forEach((department, departmentStats) -> {
+            System.out.println(department);
+            System.out.printf("  Count   : %d%n", departmentStats.getCount());
+            System.out.printf("  Average : %.0f%n", departmentStats.getAverage());
+            System.out.printf("  Max     : %.0f%n", departmentStats.getMax());
+            System.out.printf("  Min     : %.0f%n", departmentStats.getMin());
+        });
     }
 
     public void displayActiveEmployees() {
