@@ -20,7 +20,7 @@
 | 3 | Sample session produces Add / Register / Borrow / Reports themes | Pass  |
 | 4 | Exit prints `Thank You` | Pass  |
 
-# Checkpoint D
+### Checkpoint D
 | # | Confirm | Your notes |
 | - | ------- | ---------- |
 | 1 | Screenshots under `notes/` (or LMS) | Pass |
@@ -37,3 +37,6 @@
 | 4 | `javac -d out src/com/academy/library/*.java` and menu sample session succeed | Pass  |
 | 5 | You can justify each collection choice (List vs Set vs Map) in your notes | Pass  |
 | 6 | Screenshots/evidence under `notes/screenshots/lab-5/` without secrets | Pass  |
+
+### Manual Verification
+It passes all of the requirements 
