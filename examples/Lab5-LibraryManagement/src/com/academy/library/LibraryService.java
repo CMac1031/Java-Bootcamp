@@ -220,7 +220,7 @@ public class LibraryService {
         book.setAvailable(false);
         borrowRecords.put(bookIdInput, memberIdInput);
         // TODO: add BorrowRecord to history; bump borrowFrequency; success message
-        BorrowRecord record = new BorrowRecord(bookIdInput, emberIdInput, LocalDate.now());
+        BorrowRecord record = new BorrowRecord(bookIdInput, memberIdInput, LocalDate.now());
         borrowHistory.add(record);
         //bump is optional in the delivery and I'm not sure how to do this will come back later
         System.out.println("Book borrowed successfully.");
@@ -229,23 +229,23 @@ public class LibraryService {
     public void returnBook() {
         // TODO: read bookId; remove from borrowRecords; setAvailable(true)
         System.out.println("Enter Book ID: ");
-        String bookIdInput = scanner.nextLine();
-        Book book = findBookById(bookId);
+        String bookIdInput = scanner.nextLine().trim();
+        Book book = findBookById(bookIdInput);
         if(book==null){
             System.out.println("Book does not exist");
             return;
         }
-        String memberId = borrowRecords.remove(bookId);
+        String memberId = borrowRecords.remove(bookIdInput);
         if (memberId == null) {
             System.out.println("Book is not currently borrowed.");
             return;
         }
-        book.setAvailable(ture);
+        book.setAvailable(true);
         // TODO: set returnDate on latest open BorrowRecord
         for (int i = borrowHistory.size() - 1; i >= 0; i--) {
             BorrowRecord record = borrowHistory.get(i);
 
-            if (record.getBookId().equals(bookId) && record.getMemberId().equals(memberId)
+            if (record.getBookId().equals(bookIdInput) && record.getMemberId().equals(memberId)
                     && record.getReturnDate() == null) {
                 record.setReturnDate(LocalDate.now());
                 break;

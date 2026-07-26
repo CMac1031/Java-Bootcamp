@@ -23,7 +23,7 @@ public class ReportService {
         String category = findMostPopularCategory();
         System.out.println("Reports: \nBooks: "+totalBooks+"\nBorrowedBooks: "+borrowedBooks
         +"\nAvailable Books: "+availableBooks+"\nTotalMemebers: "+totalMembers+"\n" +
-                "\nMost Popular Category"+ category);
+                "\nMost Popular Category: "+ category);
     }
 
     public Path exportReportToFile(String fileName) throws IOException {
@@ -32,7 +32,7 @@ public class ReportService {
         int borrowedBooks = libraryService.getBorrowRecords().size();
         int availableBooks = totalBooks-borrowedBooks;
         int totalMembers = libraryService.getMembers().size();
-
+        String category = findMostPopularCategory();
         StringBuilder report = new StringBuilder();
 
         report.append("Reports\n");
@@ -40,7 +40,7 @@ public class ReportService {
         report.append("Borrowed : ").append(borrowedBooks).append('\n');
         report.append("Available : ").append(availableBooks).append('\n');
         report.append("Members : ").append(totalMembers).append('\n');
-        report.append("Most Popular Category : ").append(popularCategory).append('\n');
+        report.append("Most Popular Category : ").append(category).append('\n');
         report.append("\nBooks per Category:\n");
 
         for (Map.Entry<String, Integer> entry : libraryService.getCategoryBookCount().entrySet()) {
