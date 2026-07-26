@@ -1,24 +1,18 @@
 package com.academy.bank;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
 public class Transaction {
 
-    private final String transactionId;
-    private final double amount;
-    private final String type;
-    private final String accountNumber;
+    private String transactionId;
+    private double amount;
+    private String type;
+    private String date;
+    private String accountNumber;
 
-    public Transaction(
-            String transactionId,
-            double amount,
-            String type,
-            String accountNumber) {
-
+    public Transaction(String transactionId, double amount, String type, String date, String accountNumber) {
         this.transactionId = transactionId;
         this.amount = amount;
         this.type = type;
+        this.date = date;
         this.accountNumber = accountNumber;
     }
 
@@ -34,25 +28,16 @@ public class Transaction {
         return type;
     }
 
-    public LocalDateTime getDate() {
+    public String getDate() {
         return date;
     }
 
     public String getAccountNumber() {
-        return accountmber;
+        return accountNumber;
     }
 
     public void display() {
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofPattern(
-                        "yyyy-MM-dd HH:mm:ss");
-
-        System.out.printf(
-                "%s | %s | Account: %s | %s: %.2f%n",
-                transactionId,
-                date.format(formatter),
-                accountNumber,
-                type,
-                amount);
+        System.out.printf("ID : %s | Account : %s | Type : %s | Amount : %.2f | Date : %s%n",
+                transactionId, accountNumber, type, amount, date);
     }
 }

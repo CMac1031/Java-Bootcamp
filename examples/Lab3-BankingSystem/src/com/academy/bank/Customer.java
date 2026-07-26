@@ -7,7 +7,6 @@ public class Customer implements Printable {
     private String email;
     private String phone;
 
-
     public Customer(String customerId, String name, String email, String phone) {
         this.customerId = customerId;
         this.name = name;
@@ -20,9 +19,7 @@ public class Customer implements Printable {
     }
 
     public void setCustomerId(String customerId) {
-        if(customerID != null && !customerId.isBlank()){
-            this.customerId = customerId;}
-        else{ System.out.println("Invalid account number!"); }
+        this.customerId = customerId;
     }
 
     public String getName() {
@@ -30,8 +27,7 @@ public class Customer implements Printable {
     }
 
     public void setName(String name) {
-        if(name != null && !name.isBlank()){this.name = name;}
-        else{ System.out.println("Invalid name!"); }
+        this.name = name;
     }
 
     public String getEmail() {
@@ -39,8 +35,7 @@ public class Customer implements Printable {
     }
 
     public void setEmail(String email) {
-        if(email != null && !email.isBlank()){this.email = email;}
-        else{ System.out.println("Invalid email!"); }
+        this.email = email;
     }
 
     public String getPhone() {
@@ -48,23 +43,18 @@ public class Customer implements Printable {
     }
 
     public void setPhone(String phone) {
-        if(phone != null && !phone.isBlank()&&(phone.length == 10){this.phone = phone;}
-        else{ System.out.println("Invalid phone number!"); }
-
+        this.phone = phone;
     }
 
     public void display() {
-        System.out.printf(
-                "Customer %s: %s, %s, %s%n",
-                customerId,
-                name,
-                email,
-                phone);
+        System.out.println("Customer ID : " + customerId);
+        System.out.println("Name : " + name);
+        System.out.println("Email : " + email);
+        System.out.println("Phone : " + phone);
     }
 
     @Override
     public void printDetails() {
         display();
     }
-
 }

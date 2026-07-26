@@ -2,7 +2,7 @@ package com.academy.bank;
 
 public class CurrentAccount extends Account implements Printable {
     private double transactionFee;
-    public CurrentAccount(String accountNumber, double balance, customer customer, double transactionFee) {
+    public CurrentAccount(String accountNumber, double balance, Customer customer, double transactionFee) {
 
         super(accountNumber, balance, customer);
         this.transactionFee = transactionFee;

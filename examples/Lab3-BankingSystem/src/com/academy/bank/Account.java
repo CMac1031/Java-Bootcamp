@@ -32,7 +32,7 @@ public abstract class Account{
     }
     public void deposit(double amount) {
         if (amount <= 0) {
-            System.out.println("Cannot Deposit a Negative amount!")
+            System.out.println("Cannot Deposit a Negative amount!");
             return;
         }
 
@@ -41,7 +41,7 @@ public abstract class Account{
 
     public boolean withdraw(double amount) {
         if (amount <= 0) {
-            System.out.println("Cannot Withdraw a Negative amount!")
+            System.out.println("Cannot Withdraw a Negative amount!");
             return false;
         }
         double totalWithdrawal = amount + calculateCharges();
