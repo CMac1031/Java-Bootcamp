@@ -6,11 +6,11 @@
 | LSP | Savings/Current usable wherever `Account` is expected |
 | ISP | Small `Printable` with one method |
 | DIP | Menu depends on `BankService` API, not raw arrays |
-- Each class has one main job. Customer, Account, and Transaction represent banking data and rules. BankService coordinates operations, while Main only displays the menu and calls service methods.
-- The account model can be extended with another subclass, such as BusinessAccount, without changing the existing SavingsAccount or CurrentAccount classes. Shared loops using Account can automatically work with the new subclass.
-- A SavingsAccount or CurrentAccount can be used anywhere an Account is expected. For example, both can be stored in Account[], and calling withdraw() or displayAccount() executes the appropriate overridden method.
-- Printable is a small interface containing only printDetails(). Classes implementing it are not forced to implement unrelated operations such as sending emails or processing payments.
-- Main asks BankService to perform banking operations instead of directly accessing the customer, account, and transaction arrays. This keeps menu code separated from storage details.
+- Each class has one  job.  Whether that is the Accounts, BankService, or Main, they each serve a purpose within the package.
+- Account.java can be extended to other subclasses without editing the classes that it has extended to.
+- A subclass should be able to work where it there is a parent class without breaking.
+- Prefer small interfaces because you can implement it wherever you need, but it is not foreced to be there
+- Its better to rely on something more robust within a system than some thing that can dynamicallly change.
 
 | Checkpoint | You have… | Pass or fail |
 | ---------- | --------- |--------------|
@@ -23,11 +23,11 @@
 Why should Account be abstract rather than a concrete empty type?
 - It should abstract because you can modify the methods without changing the class. 
 Where does dynamic dispatch show up when you call displayAccount() on Account[]?
-- 
+- It occurs when the JVM decides which method to call. 
 How does Printable differ from extending a base class?
 - Printable is an Interface it can be implemented by multiple classes while a base class can only extend one class.
 What would break if Main owned all arrays instead of BankService?
-- This break SRP(Single Responsibility Pricinple) because it would make the main class handle more than one thing. This would make it harder to manage the system and fix bugs. 
+- This break SRP(Single Responsibility Princinple) because it would make the main class handle more than one thing. This would make it harder to manage the system and fix bugs. 
 How do today’s Customer/Account patterns prepare you for later CRM entity design without building Spring here?
 - A future CRM could apply the same patters as Customer and Account use to bigger scalable enterprises such as Spring services. 
 

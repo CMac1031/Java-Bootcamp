@@ -44,17 +44,12 @@ public class ReportService {
         report.append("\nBooks per Category:\n");
 
         for (Map.Entry<String, Integer> entry : libraryService.getCategoryBookCount().entrySet()) {
-            report.append(entry.getKey())
-                    .append(" : ")
-                    .append(entry.getValue())
-                    .append('\n');
+            report.append(entry.getKey()).append(" : ").append(entry.getValue()).append('\n');
         }
 
         Path outputPath = Path.of(fileName);
 
-        Files.writeString(
-                outputPath,
-                report.toString());
+        Files.writeString(outputPath, report.toString());
 
         return outputPath;
     }

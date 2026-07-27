@@ -91,10 +91,6 @@ public class BankService {
 
     public void createCurrentAccount() {
         // TODO: read existing customer, initial balance, transaction fee
-        if (accountCount >= MAX_ACCOUNTS) {
-            System.out.println("Account capacity reached.");
-            return;
-        }
         Customer customer = readExistingCustomer();
         if (customer == null) {
             System.out.println("Customer does not exist.");
@@ -120,9 +116,7 @@ public class BankService {
         // TODO: read existing account + amount; account.deposit; recordTransaction DEPOSIT
 
         Account account = readExistingAccount();
-        if (account == null) {
-            return;
-        }
+        if (account == null) {return;}
         double amount = readPositiveAmount("Deposit Amount : ");
         account.deposit(amount);
         recordTransaction(account.getAccountNumber(), amount, "DEPOSIT");

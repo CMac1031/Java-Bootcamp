@@ -1,3 +1,29 @@
-christophermcenroe@MacBook-Pro-2 Lab4-MemoryManagement % java -Xlog:gc GarbageCollectionDemo
-[0.020s][info][gc] Using G1
+hristophermcenroe@MacBook-Pro-2 Lab4-MemoryManagement % java -Xlog:gc GarbageCollectionDemo
+[0.013s][info][gc] Using G1
 ===== Garbage Collection Demonstration =====
+
+===== JVM Memory Report: Before Allocation =====
+Total Memory : 292 MB
+Free Memory  : 289 MB
+Used Memory  : 2 MB
+Max Memory   : 4608 MB
+-----------------------------
+Creating Objects...
+[0.111s][info][gc] GC(0) Pause Young (Normal) (G1 Evacuation Pause) 21M->19M(292M) 4.742ms
+Objects Created: 100000
+
+===== JVM Memory Report: After Allocation =====
+Total Memory : 292 MB
+Free Memory  : 267 MB
+Used Memory  : 24 MB
+Max Memory   : 4608 MB
+-----------------------------
+[0.118s][info][gc] GC(1) Pause Full (System.gc()) 24M->1M(28M) 4.363ms
+
+===== JVM Memory Report: After GC =====
+Total Memory : 28 MB
+Free Memory  : 26 MB
+Used Memory  : 1 MB
+Max Memory   : 4608 MB
+-----------------------------
+Elapsed time: 55 ms

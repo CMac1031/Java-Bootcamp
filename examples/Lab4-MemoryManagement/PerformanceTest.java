@@ -45,22 +45,62 @@ public class PerformanceTest {
         long memoryAfter = MemoryMonitor.getUsedMemoryBytes();
         long memoryUsed = memoryAfter - memoryBefore;
 
+        double memoryUsedMb = memoryUsed / (1024.0 * 1024.0);
+        double elapsedMillis = elapsedNanos / 1_000_000.0;
+
+        System.out.printf("%-12d %-14s %-18s%n", count, String.format("%.2f MB", memoryUsedMb),
+                String.format("%.3f ms", elapsedMillis));
+        objects = null;
+        MemoryMonitor.triggerGarbageCollection();
 
     }
 
     private static void measureLoopExecution() {
         // TODO: loop 10_000_000 iterations summing i into sum; print elapsed ms
-        throw new UnsupportedOperationException("TODO");
+        long start = System.nanoTime();
+        long sum = 0;
+
+        for (int i = 0; i < 10_000_000; i++) {sum += i;}
+
+        double elapsedMillis = (System.nanoTime() - start) / 1_000_000.0;
+
+        System.out.printf("Loop execution (10M iterations) : %.3f ms | sum = %d%n", elapsedMillis, sum);
     }
 
     private static void measureArrayAllocation() {
         // TODO: allocate int[1_000_000], fill with i, print elapsed ms
-        throw new UnsupportedOperationException("TODO");
+        long start = System.nanoTime();
+
+        int[] numbers = new int[1_000_000];
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = i;
+        }
+
+        double elapsedMillis =
+                (System.nanoTime() - start) / 1_000_000.0;
+
+        System.out.printf(
+                "int[1,000,000] allocation       : %.3f ms%n",
+                elapsedMillis);
+
+        numbers = null;
+        MemoryMonitor.triggerGarbageCollection();
     }
 
     private static void measureLargeByteArray() {
         MemoryMonitor.printMemoryReport("Before Large byte[]");
         // TODO: allocate 10 MB byte[]; print After report; null + GC; print After Releasing
-        throw new UnsupportedOperationException("TODO");
+        MemoryMonitor.printMemoryReport(
+                "Before Large byte[]");
+
+        byte[] largeArray = new byte[10 * 1024 * 1024];
+        MemoryMonitor.printMemoryReport("After Large byte[]");
+
+        largeArray = null;
+        MemoryMonitor.triggerGarbageCollection();
+
+        MemoryMonitor.printMemoryReport(
+                "After Releasing Large byte[]");
     }
 }

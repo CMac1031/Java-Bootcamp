@@ -28,7 +28,7 @@
 - Why must the package folder tree match package com.academy.student?
   - In Java, this allows the compilers to locate and combine classes easier/consistently by name.
 - Why prefer nextLine() + parse over nextInt() in a menu app?
-  - It less likely to crash the program because you can put anything in nextLine() then parse it and it won't crash. On contrary, if you put anything other than an integer in nextInt() it will crash the program.
+  - It less likely to crash the program because you can put anything in nextLine() then parse it and it won't crash. On the contrary, if you put anything other than an integer in nextInt() it will crash the program.
 - Why keep a studentCount instead of relying on students.length alone?
   - student.lengths is a fixed length while studentCount changes dynamically to know how many students are in the array.
 - What belongs in Main versus StudentManager? 
