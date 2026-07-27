@@ -1,0 +1,30 @@
+2026-07-27 13:22:25 INFO Login successful for account 1001
+2026-07-27 13:22:39 ERROR Requested 20000.0 Balance 11000.0
+InsufficientFundsException Transaction Failed. Insufficient Account Balance.
+[com.academy.atm.Account.withdraw(Account.java:50), com.academy.atm.ATMService.lambda$withdraw$1(ATMService.java:92), com.academy.atm.ATMService.executeTransaction(ATMService.java:194), com.academy.atm.ATMService.withdraw(ATMService.java:89), com.academy.atm.Main.main(Main.java:34)]
+2026-07-27 13:22:52 ERROR Amount must be greater than zero.
+InvalidAmountException Amount must be greater than zero.
+[com.academy.atm.Account.deposit(Account.java:39), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:80), com.academy.atm.ATMService.executeTransaction(ATMService.java:194), com.academy.atm.ATMService.deposit(ATMService.java:77), com.academy.atm.Main.main(Main.java:33)]
+2026-07-27 13:23:01 INFO Deposit completed successfully | Execution Time: 1594 ms
+2026-07-27 13:23:11 ERROR Invalid numeric input during Deposit
+InputMismatchException Invalid numeric input.
+[com.academy.atm.ATMService.readAmount(ATMService.java:263), com.academy.atm.ATMService.lambda$deposit$0(ATMService.java:79), com.academy.atm.ATMService.executeTransaction(ATMService.java:194), com.academy.atm.ATMService.deposit(ATMService.java:77), com.academy.atm.Main.main(Main.java:33)]
+2026-07-27 13:23:42 INFO Mini Statement completed successfully | Execution Time: 2 ms
+2026-07-27 13:24:15 ERROR NullPointerException demonstration
+NullPointerException Cannot invoke "com.academy.atm.Account.getBalance()" because "<local1>" is null
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:156), com.academy.atm.Main.main(Main.java:44)]
+2026-07-27 13:24:15 ERROR ArithmeticException demonstration
+ArithmeticException / by zero
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:163), com.academy.atm.Main.main(Main.java:44)]
+2026-07-27 13:24:15 ERROR ArrayIndexOutOfBoundsException demonstration
+ArrayIndexOutOfBoundsException Index 10 out of bounds for length 3
+[com.academy.atm.ATMService.demonstrateUncheckedExceptions(ATMService.java:172), com.academy.atm.Main.main(Main.java:44)]
+2026-07-27 13:24:53 ERROR Invalid PIN entered.
+InvalidPinException Invalid PIN entered.
+[com.academy.atm.ATMService.login(ATMService.java:54), com.academy.atm.Main.main(Main.java:32)]
+2026-07-27 13:25:00 ERROR Account not found: 1232
+AccountNotFoundException Account not found: 1232
+[com.academy.atm.ATMService.findAccount(ATMService.java:246), com.academy.atm.ATMService.login(ATMService.java:48), com.academy.atm.Main.main(Main.java:32)]
+2026-07-27 13:25:07 ERROR Account not found: 21341
+AccountNotFoundException Account not found: 21341
+[com.academy.atm.ATMService.findAccount(ATMService.java:246), com.academy.atm.ATMService.login(ATMService.java:48), com.academy.atm.Main.main(Main.java:32)]
