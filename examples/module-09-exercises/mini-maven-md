@@ -1,0 +1,6 @@
+
+| # | Confirm | Notes |
+| - | ------- | ----- |
+| 1 | `mvn -q test` succeeds | Pass / Fail |
+| 2 | `java -jar target/build-demo.jar` prints the banner | Pass |
+| 3 | JUnit is `test` scope; compiler release is 21 | Pass |
