@@ -1,6 +1,16 @@
-Trivial examples:
-assertNotNull(customer) 
-and assertTrue(true)
+# Exercise 3 — Trivial vs Real Asserts
 
-Meaningful Examples:
-//rite two real asserts: Amina status equals ACTIVE; Ravi status equals PROSPECT for ids CUS-1001 / CUS-1002
+## Trivial asserts
+assertNotNull(customer) assertTrue(true).
+
+## Real asserts
+assertEquals(CustomerStatus.ACTIVE, find("CUS-1001").getStatus()); // Amina
+assertEquals(CustomerStatus.PROSPECT, find("CUS-1002").getStatus()); // Ravi
+
+reject AI tests that never mention domain values or outcomes.
+
+| # | Confirm | Notes |
+| --- | --- | --- |
+| 1 | Two trivial and two meaningful asserts | Pass  |
+| 2 | Fixtures used correctly | Pass  |
+| 3 | Notes saved | Pass  |

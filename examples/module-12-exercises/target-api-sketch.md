@@ -18,3 +18,10 @@ Write: *Do not complete full Lab 12 refactor in pre-lab.*
 
 ## Scope
 Pre-lab only — do not finish the full graded lab in this exercise.
+
+| # | Confirm | Notes |
+| --- | --- | --- |
+| 1 | File exists at `notes/lab12-target-api-sketch.md` | Pass  |
+| 2 | Methods listed | Pass  |
+| 3 | Ravi transition noted | Pass  |
+| 4 | SOAP/Spring excluded | Pass  |

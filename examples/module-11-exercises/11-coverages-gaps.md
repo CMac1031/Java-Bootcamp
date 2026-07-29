@@ -16,3 +16,9 @@
 
 ## One sentence takeaway
 Lab 11 is a guided preview of AI + tests; Labs 17–18 are the formal testing curriculum.
+
+| # | Confirm | Notes |
+| --- | --- | --- |
+| 1 | File exists at `notes/lab11-coverage-gaps.md` | Pass  |
+| 2 | Lab 11 in-scope items listed | Pass  |
+| 3 | Lab 17 and Lab 18 deferred items named | Pass  |
