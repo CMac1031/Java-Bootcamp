@@ -51,8 +51,10 @@ _Mark **Pass** or **Fail** in your lab notes._
 | 4 | No secrets; no running SOAP server claimed | Pass  |
 
 Which design decision most affected partner usability?
--
+-Using one consistent namespace and providing complete request, response, and fault samples most improved partner usability.
+
 What evidence proves the contract is implementable in Lab 24?
--
+-The WSDL defines CreateCustomer, GetCustomer, and UpdateCustomer, and all contract and sample XML files pass xmllint well-formedness checks.
+
 Which failure was hardest to diagnose (namespace vs element name)?
--
+- The failure that was hardest to diagnose was the schemaLocation mismatch, which caused a schema validation error in SOAPUI. It required careful checking of the WSDL and XSD files to identify the incorrect reference.
