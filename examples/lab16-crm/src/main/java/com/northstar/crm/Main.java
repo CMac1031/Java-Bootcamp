@@ -128,6 +128,15 @@ public class Main {
         if (notFoundResult instanceof ApiResult.Fail fail) {
             System.out.println(fail.error().toJson());
         }
+        ApiResult secondNotFoundResult =
+                facade.getById(
+                        "CUS-9999",
+                        "lab-request-002"
+                );
+
+        if (secondNotFoundResult instanceof ApiResult.Fail fail) {
+            System.out.println(fail.error().toJson());
+        }
         ApiResult conflictResult =
                 facade.changeStatus(
                         "CUS-1001",

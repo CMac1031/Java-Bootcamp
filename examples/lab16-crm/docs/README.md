@@ -1,39 +1,39 @@
-### Checkpoint A — Repository boundary
+### Checkpoint A — Model types
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
-| - | ------- | -------- |
-| 1 | `lab15-crm` under `examples/` | Pass  |
-| 2 | `CustomerRepository` + private-Map in-memory impl | Pass  |
-| 3 | No Map exposed to callers | Pass  |
+| - | ------- | ---- |
+| 1 | `lab16-crm` under `examples/` | Pass |
+| 2 | `ErrorResponse` always includes `correlationId` + `errors` | Pass  |
+| 3 | `BusinessException` factories for notFound/conflict | Pass  |
 
-### Checkpoint B — Service + validator
-
-_Mark **Pass** or **Fail** in your lab notes._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `CustomerService` interface + `DefaultCustomerService` | Pass  |
-| 2 | `CustomerValidator` with ALLOWED transitions | Pass  |
-| 3 | Shared repository instance in wiring | Pass  |
-
-### Checkpoint C — Behavior proof
+### Checkpoint B — Handler + facade
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `CUS-1002` activates PROSPECT → ACTIVE | Pass  |
-| 2 | `CUS-1001` ACTIVE → PROSPECT rejected; status unchanged | Pass  |
-| 3 | Correlation ID present on failure | Pass  |
+| - | ------- | ----- |
+| 1 | `GlobalExceptionHandler` maps business/validation/unexpected | Pass  |
+| 2 | Facade returns `ApiResult` Ok/Fail | Pass  |
+| 3 | Catch order: business before generic | Pass  |
 
-### Checkpoint D — Tests + docs
+### Checkpoint C — Demo evidence
 
 _Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `CustomerValidatorTest` green | Pass  |
-| 2 | README transition table + wiring | Pass  |
-| 3 | Failure experiments recorded; no secrets/`target/` staged | Pass  |
+| - | ------- | ---- |
+| 1 | 400 validation JSON with field errors + `lab-request-001` | Pass |
+| 2 | 404 for `CUS-9999` | Pass |
+| 3 | 409 illegal transition; `CUS-1001` still ACTIVE | Pass  |
+
+### Checkpoint D — Tests + hygiene
+
+_Mark **Pass** or **Fail** in your lab notes._
+
+| # | Confirm | Your notes |
+| - | ------- | ---- |
+| 1 | `GlobalExceptionHandlerTest` green | Pass |
+| 2 | No stack traces / secrets in client payloads or Git | Pass |
+| 3 | Error-model notes + status choices documented | Pass |

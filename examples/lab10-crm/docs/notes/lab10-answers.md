@@ -1,23 +1,17 @@
-### Manual Verification
-Copilot status Ready; workspace is lab10-crm.
--pass
-Customer / CustomerStatus compile with zero JPA/Spring imports.
--pass
-CustomerService rejects blank ID, duplicate ID, unknown ID on update.
--pass
-Main prints both sample customers; PROSPECT list includes CUS-1002; after activation status is ACTIVE.
--pass
-ai-review-notes.md has lab10-001–lab10-004.
-At least one deliberately caught Copilot mistake documented.
-No real PII/secrets in prompts or committed files.
-git status shows no staged target/ or IDE junk.
-mvn -q clean compile succeeds.
-You can explain accepted AI lines without reopening Chat
-
-### Reflection Questions
-Most dangerous suggestion you caught, and how.
-- 
-One prompt change that improved the accepted output.
-- Being very specific about the expected behavior of the `addCustomer` method, including edge cases like duplicate IDs and blank IDs, helped improve the output.
-What you would tell a tech lead to prove you did not blind-accept AI.
-- I would tell them that I carefully reviewed each AI-generated line, ensuring it aligned with our coding standards and requirements, and that I tested the code thoroughly before committing it.
+### Manual Verification:
+mvn -q clean test passes (≈7 tests, document exact count).
+- pass 
+CustomerTest proves equals/toString with real assertions.
+- pass
+CustomerServiceTest covers add / duplicate / update / unknown-ID.
+- pass
+Mock test verifies notifier args for CUS-1002.
+- pass
+CustomerNotifier is a useful extraction—not a Spring/JPA paste.
+- pass
+Notes lab11-001–lab11-004 present.
+- pass
+At least one false-confidence assertion rejected.
+No secrets / real PII in tests or prompts.
+git status clean of target/ junk.
+You can explain every accepted AI test/refactor without reopening Chat.

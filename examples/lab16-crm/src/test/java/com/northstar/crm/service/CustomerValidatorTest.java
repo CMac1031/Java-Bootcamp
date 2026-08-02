@@ -5,6 +5,7 @@ import com.northstar.crm.entity.CustomerStatus;
 import com.northstar.crm.repository.InMemoryCustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import com.northstar.crm.exception.BusinessException;
 
 import java.time.LocalDateTime;
 
@@ -34,8 +35,8 @@ class CustomerValidatorTest {
 
     @Test
     void activeToProspectRejected() {
-        IllegalStateException exception = assertThrows(
-                IllegalStateException.class,
+        BusinessException exception = assertThrows(
+                BusinessException.class,
                 () -> validator.validateTransition(
                         CustomerStatus.ACTIVE,
                         CustomerStatus.PROSPECT,
@@ -43,8 +44,16 @@ class CustomerValidatorTest {
                 )
         );
 
-        assertTrue(exception.getMessage().contains("ACTIVE -> PROSPECT"));
-        assertTrue(exception.getMessage().contains("lab-request-001"));
+        assertEquals("BUSINESS_CONFLICT", exception.getCode());
+        assertEquals(409, exception.getStatusHint());
+        assertEquals(
+                "lab-request-001",
+                exception.getCorrelationId()
+        );
+        assertTrue(
+                exception.getMessage()
+                        .contains("ACTIVE -> PROSPECT")
+        );
     }
 
     @Test

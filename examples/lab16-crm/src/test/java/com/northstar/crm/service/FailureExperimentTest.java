@@ -4,6 +4,7 @@ import com.northstar.crm.entity.Customer;
 import com.northstar.crm.entity.CustomerStatus;
 import com.northstar.crm.repository.InMemoryCustomerRepository;
 import org.junit.jupiter.api.Test;
+import com.northstar.crm.exception.BusinessException;
 
 import java.time.LocalDateTime;
 
@@ -39,7 +40,7 @@ class FailureExperimentTest {
         IllegalStateException exception = assertThrows(
                 IllegalStateException.class,
                 () -> service.addCustomer(ravi)
-        );
+);
 
         assertEquals("simulated repository failure", exception.getMessage());
         assertTrue(service.findById("CUS-1001").isPresent());
@@ -55,7 +56,7 @@ class FailureExperimentTest {
                 new CustomerValidator(repository);
 
         assertThrows(
-                IllegalStateException.class,
+                BusinessException.class,
                 () -> validator.validateTransition(
                         CustomerStatus.CLOSED,
                         CustomerStatus.ACTIVE,
@@ -64,7 +65,7 @@ class FailureExperimentTest {
         );
 
         assertThrows(
-                IllegalStateException.class,
+                BusinessException.class,
                 () -> validator.validateTransition(
                         CustomerStatus.ACTIVE,
                         CustomerStatus.PROSPECT,
@@ -97,8 +98,8 @@ class FailureExperimentTest {
                 "lab-request-001"
         );
 
-        IllegalStateException exception = assertThrows(
-                IllegalStateException.class,
+        BusinessException exception = assertThrows(
+                BusinessException.class,
                 () -> service.changeStatus(
                         "CUS-1002",
                         CustomerStatus.ACTIVE,
@@ -107,7 +108,7 @@ class FailureExperimentTest {
         );
 
         assertTrue(exception.getMessage().contains("ACTIVE -> ACTIVE"));
-        assertTrue(exception.getMessage().contains("lab-request-001"));
+        assertEquals("lab-request-001", exception.getCorrelationId());
 
         assertEquals(
                 CustomerStatus.ACTIVE,

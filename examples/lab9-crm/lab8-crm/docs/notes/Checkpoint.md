@@ -1,39 +1,42 @@
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `~/java-bootcamp/examples/lab9-crm` exists (copied from Lab 8) | Pass  |
-| 2 | `pom.xml` has `com.northstar:customer-service:0.1.0-SNAPSHOT` and `packaging` jar | Pass  |
-| 3 | Properties set `maven.compiler.release` / JDK 21 mindset | Pass  |
-| 4 | Edited on VS Code laptop | Pass  |
+### Checkpoint A — Project + test deps
 
-### Checkpoint B — Dependencies, plugins, tests
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | Spring placeholder + JUnit `test` scope declared | Pass  |
-| 2 | `PlaceholderTest` passes under Surefire | Pass  |
-| 3 | Compiler + jar `Main-Class` configured | Pass  |
-| 4 | `mvn test` and `mvn package` succeed | Pass  |
+| - | ------- | ---- |
+| 1 | `lab11-crm` copied from Lab 10 under `examples/` | Pass |
+| 2 | JUnit 5 + Mockito on **test** scope; Surefire present | Pass |
+| 3 | Copilot still Ready | Pass |
 
-### Checkpoint C — Lifecycle + tree + profiles
+### Checkpoint B — Core tests green
 
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
-
-| # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `docs/lifecycle-evidence.md` covers validate → install | Pass  |
-| 2 | `docs/dependency-tree.txt` annotated (direct/transitive, JUnit scope) | Pass  |
-| 3 | Profiles `dev` / `test` / `prod` demonstrated with `help:active-profiles` | Pass  |
-| 4 | `application-dev.properties` has no secrets | Pass  |
-
-### Checkpoint D — JAR, CI, failures, security
-
-_Mark each row **Pass** or **Fail** in your lab notes (GitHub markdown files are not interactive checklists)._
+_Mark **Pass** or **Fail** in your lab notes._
 
 | # | Confirm | Your notes |
-| - | ------- | ---------- |
-| 1 | `java -jar target/customer-service.jar` works | Pass  |
-| 2 | README documents `mvn -B verify` | Pass  |
-| 3 | At least three failure experiments recorded and restored | Pass  |
-| 4 | No secrets / `target/` / `.m2` dump committed | Pass  |
+| - | ------- | ---- |
+| 1 | `CustomerTest` (2) and `CustomerServiceTest` (4) pass | Pass |
+| 2 | Sample IDs `CUS-1001` / `CUS-1002` used in tests | Pass |
+| 3 | No JUnit 4 imports | Pass / Fail |
+
+### Checkpoint C — Refactor + mock
+
+_Mark **Pass** or **Fail** in your lab notes._
+
+| # | Confirm | Your notes |
+| - | ------- | ---- |
+| 1 | `CustomerNotifier` extracted and called from `updateStatus` | Pass |
+| 2 | No-arg `CustomerService()` still works (no-op notifier) | Pass |
+| 3 | `CustomerNotifierMockTest` verifies PROSPECT → ACTIVE | Pass |
+| 4 | `validateCustomerId` is the single blank-ID check | Pass  |
+
+### Checkpoint D — Notes + guidelines + experiments
+
+_Mark **Pass** or **Fail** in your lab notes._
+
+| # | Confirm | Your notes |
+| - | ------- | ---- |
+| 1 | Entries `lab11-001`–`lab11-004` complete | Pass |
+| 2 | False-confidence rejection documented | Pass |
+| 3 | Coverage gaps documented; acceptance checklist present | Pass |
+| 4 | Failure experiments recorded; `mvn clean test` green | Pass |
+
