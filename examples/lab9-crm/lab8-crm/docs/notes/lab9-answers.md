@@ -53,24 +53,19 @@ git status does not stage target/ or secrets.
 Concepts/reflection drafts mention artifact GAV vs CUS-1001 distinction.
 - yes
 
-### Security Questions
-Which inputs are untrusted? (Downloaded Maven artifacts; later API inputs)
-Where are authn/authz/validation enforced later? (App layers + CI/repo managers)
-Which values are sensitive, and where stored? (Never in POM; use secrets stores)
-What can be retried safely? (mvn verify, snapshot install)
-What happens after a partial failure? (Failed test stops verify; no bad promotion in CI)
-What would an operator monitor? (CI duration, failed verify jobs)
-Which local default is unacceptable in production? (dev profile active by default with real secrets—never do that)
-How are contracts versioned? (Artifact version + later OpenAPI/WSDL)
+### Failure Handling
+1. Set spring.version to nonsense; mvn compile
+- should fail with missing dependency error
+2. Change PlaceholderTest to assertTrue(false); mvn test / mvn verify
+- should fail with test failure
+3. Run mvn install twice
+- should succeed on second run
+
 
 ### Reflection Questions
 Which design decision most affected build correctness?
-Which failure was hardest to diagnose?
+- Using Maven’s standard project layout and keeping pom.xml in the project root most affected build correctness.
 What evidence proves the lifecycle walk was real (not only package once)?
-What breaks first at ten times the dependency count?
-Which concern should move to shared infrastructure (artifact repository, CI cache)?
-What must change before real customer data is used?
-How does this lab connect to Lab 8 structure and Lab 10+ code?
-What metric, log field, or CI signal matters most when verify fails?
-Why is test scope on JUnit more than a style preference?
-(Forward look) When Spring Boot arrives, what stays stable in this POM vs what changes first?
+- The lifecycle evidence records successful runs of validate, compile, test, package, verify, and install.
+Which failure was hardest to diagnose?
+- The missing-POM failure was hardest because the terminal appeared to be inside lab9-crm, but the actual Maven project was nested inside lab9-crm/lab8-crm.

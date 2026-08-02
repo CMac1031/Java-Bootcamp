@@ -32,3 +32,36 @@ modified:   docs/notes/CODING-STANDARDS.md
 no changes added to commit (use "git add" and/or "git commit -a")
 
 ### Failure Tests
+1. Rename pom.xml to pom.xml.bak and run `mvn compile` — it should fail with a missing POM error.
+2. run mvn clean compile twice - the second time should be faster because the first time will have compiled the classes and stored them in the target folder.
+3. Call new CustomerRepository().findById("CUS-1001") - it should return null because the repository is empty.
+
+### Manual Verification:
+pwd is .../lab8-crm (or agreed alternate name).
+- pass 
+mvn clean compile prints BUILD SUCCESS.
+- pass
+find src/main/java -name '*.java' | sort lists all expected stubs + Main.
+- pass
+java -cp target/classes com.northstar.crm.Main prints packages + CUS-1001 / CUS-1002.
+- pass
+docs/CODING-STANDARDS.md and docs/layer-flow.md exist and mention layers.
+- pass
+rg springframework src (or equivalent search) finds nothing required.
+- pass
+git check-ignore -v target (or git status) shows target/ untracked/ignored.
+- pass
+Stub call intentional failure: repository findById("CUS-1001") throws UnsupportedOperationException if you exercise it from a temporary harness.
+- pass
+Re-run compile twice—second run still succeeds.
+- pass
+Notes include correlation ID lab-request-001 and NOW vs FUTURE boundaries.
+- pass
+
+### Reflection Questions
+Which design decision most affected correctness of the skeleton?
+- Using Maven’s standard directory structure and matching each Java package declaration to its folder ensured that Maven could find and compile every class correctly.
+What evidence proves the layered structure is real, not only aspirational?
+- The find src/main/java -name '*.java' | sort output shows actual classes inside the controller, service, repository, entity, DTO, config, and exception packages.
+Which failure was hardest to diagnose (pathing, packages, POM)?
+- The hardest failure to diagnose was the missing POM error when renaming pom.xml to pom.xml.bak. It required understanding Maven's build lifecycle and the importance of the POM file in defining project structure and dependencies.
